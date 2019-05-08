@@ -1,2 +1,66 @@
-
+<html>
+  <p>The server must flatten the JSON hierarchy, mapping each item/object in the JSON to a single line of CSV report (see included sample output), where the keys of the JSON objects will be the columns of the CSV report. You may assume the JSON data has a regular structure and hierarchy (see included sample file). In other words, all sibling records at a particular level of the hierarchy will have the same set of properties, but child objects might not contain the same properties. In all cases, every property you encounter must be present in the final CSV output. You may also assume that child records in the JSON will always be in a property called `children`.</p>
+  <head>
+  </head>
+  <body> 
+    <form id="enterJSON" name="enterJSON" method="POST" action="/api/convertToCSV">
+      <textarea name="enterJSON" rows="20" cols="100">{
+          "firstName": "Joshie",
+          "lastName": "Wyattson",
+          "county": "San Mateo",
+          "city": "San Mateo",
+          "role": "Broker",
+          "sales": 1000000,
+          "children": [
+          {
+            "firstName": "Beth Jr.",
+            "lastName": "Johnson",
+            "county": "San Mateo",
+            "city": "Pacifica",
+            "role": "Manager",
+            "sales": 2900000,
+            "children": [
+              {
+                "firstName": "Smitty",
+                "lastName": "Won",
+                "county": "San Mateo",
+                "city": "Redwood City",
+                "role": "Sales Person",
+                "sales": 4800000,
+                "children": []
+              },
+              {
+                "firstName": "Allen",
+                "lastName": "Price",
+                "county": "San Mateo",
+                "city": "Burlingame",
+                "role": "Sales Person",
+                "sales": 2500000,
+                "children": []
+              }
+            ]
+          },
+          {
+            "firstName": "Beth",
+            "lastName": "Johnson",
+            "county": "San Francisco",
+            "city": "San Francisco",
+            "role": "Broker/Sales Person",
+            "sales": 7500000,
+            "children": []
+          }
+        ]
+      };</textarea>
+      <input type="submit">
+    </form>
+    <!-- <form id="filepickerjson" method="POST" action="/api/convert-to-csv">
+    </form> -->
+    <form enctype="multipart/form-data" method="POST" action="api/upload">
+      <input type="file" name="myFile">
+      <input type="submit" value="Upload File">
+    </form>
+    <script src = "./app.js">
+    </script>
+  </body>
+</html>
 

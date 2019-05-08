@@ -2,6 +2,9 @@
 	<link rel = "stylesheet" type = "text/css" href = "styles.css" />
 	<head>
 		<body>
+			<span id="player1"></span>
+			<span id="vs">vs</span>
+			<span id="player2"></span>
 				<table border = '1'> 
 					<tr>
 						<td id="1" onclick="changeThisSquare(this)"></td>
@@ -19,7 +22,7 @@
 						<td id="9" onclick="changeThisSquare(this)"></td>
 					</tr>
 				</table>
-				<button type ="button" onclick="beginTurn()">END TURN</button>
+				<button type ="button" onclick="newTurn()">END TURN</button>
 		</body>
 	</head>
 	<script src="./app.js"> </script>

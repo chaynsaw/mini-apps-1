@@ -1,15 +1,28 @@
 console.log('App.js loaded.');
 window.onload = () => {
+  player1Prompt();
+  player2Prompt();
   displayCurrentBoard();
-  beginTurn()
+  newTurn()
 };
 
+function player1Prompt(){
+  var person = prompt('Player 1, enter your name', 'Player 1')
+  if (person !== null) {
+    document.getElementById('player1').innerHTML = person;
+  }
+}
+function player2Prompt(){
+  var person = prompt('Player 2, enter your name', 'Player 2')
+  if (person !== null) {
+    document.getElementById('player2').innerHTML = person;
+  }
+}
 // MODEL
 var currentTurn;
-
-var lastMove;
+var player1, player2, lastMove;
 var board = {
-  0: ['','','x'],
+  0: ['','',''],
   1: ['','',''],
   2: ['','','']
 }
@@ -98,7 +111,7 @@ function displayCurrentBoard(){
 }
 
 // CONTROLLER
-function beginTurn() {
+function newTurn() {
   determineVictory();
   if (currentTurn === 'player1') {
     currentTurn = 'player2';
@@ -109,7 +122,7 @@ function beginTurn() {
   console.log(currentTurn);
 }
 function changeThisSquare(element){
-  if (currentTurn === 'player1') {
+  if (currentTurn === player1) {
     // debugger;
     if (boardKeys[element.id] === '') {
       // clear last move
@@ -123,7 +136,7 @@ function changeThisSquare(element){
     }
   
   }
-  if (currentTurn === 'player2') {
+  if (currentTurn === player2) {
     // debugger;
     if (boardKeys[element.id] === '') {
       // clear last move
@@ -138,19 +151,4 @@ function changeThisSquare(element){
   
   }
   displayCurrentBoard();
-  // var thisSquare = element.id;
-  // if(boardKeys[thisSquare] === '') {
-    
-  //   boardKeys[thisSquare] = 'x';
-  //   lastMove.push([element.id, ''])
-  // } else {
-  //   if (boardKeys[thisSquare] === 'x') {
-  //     boardKeys[thisSquare] = 'o';
-  //     lastMove.push([element.id, 'x'])
-  //   } else {
-  //     boardKeys[thisSquare] = 'x';
-  //     lastMove.push([element.id, 'o'])
-  //   }
-  // }
-  // element.innerHTML = boardKeys[element.id];
 }
