@@ -1,0 +1,6 @@
+#square {
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+  border: 1px solid red;
+}

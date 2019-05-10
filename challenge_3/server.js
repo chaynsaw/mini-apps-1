@@ -34,3 +34,15 @@ app.get('/query', (req, res) => {
     res.json(results);
   })
 })
+
+app.post('/query', (req,res) => {
+  var queryStr = `INSERT INTO pet VALUES ('Puffball','Diane','${req.body.death}','f','1999-03-30',NULL);`
+  console.log(typeof req.body);
+  db.query(queryStr, (err, results, fields) => {
+    if (err) {
+      console.log('fuck');
+      throw err;
+    }
+    res.end('success');
+  })
+})

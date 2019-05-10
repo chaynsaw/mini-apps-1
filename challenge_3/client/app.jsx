@@ -1,3 +1,5 @@
+
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +33,7 @@ class Form extends React.Component {
         <Password currentStage={this.state.currentStage}/>
         {/* <InputField things = {this.state}/> */}
         <NextButton onClick={this.switchStage} />
+        <OtherButton />
       </form>
     )
   }
@@ -68,6 +71,20 @@ var Password = (props) => (
 var NextButton = (props) => (
   <input type="button" value="Next Stage" onClick={props.onClick}>
   </input>
+)
+var OtherButton = (props) => (
+  <input type="button" value="Send a fetch" onClick={() => {
+    var data = {death: 'blah'}
+    fetch('http://localhost:3000/query', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-type': 'application/json' }
+    })
+      .then(function(response) {
+      return response;
+    })
+    }}>
+    </input>
 )
 
 ReactDOM.render(<Form />, document.getElementById('root'))
